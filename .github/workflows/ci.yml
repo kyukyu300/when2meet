@@ -106,8 +106,8 @@ jobs:
       - name: Start Mysql
         run: |
           sudo systemctl start mysql
-          mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
-      
+          mysql -e "use mysql; FLUSH PRIVILEGES; ALTER USER '${{ env.MYSQL_USER }}'@'localhost' IDENTIFIED BY '${{ env.MYSQL_PASSWORD }}';" -uroot -proot
+          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ env.MYSQL_PASSWORD }}
 
       - name: Run tests
         run: |
