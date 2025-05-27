@@ -6,10 +6,15 @@ authors = ["kyukyu300 kyujin1252@gmail.com"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.13"
+python = ">=3.13,<3.14"
 fastapi = "^0.115.12"
 uvicorn = "^0.34.2"
 orjson = "3.10.12"
+tortoise-orm = {version = "0.23.0", extras = ["asyncmy"]}
+cryptography = "44.0.0"
+aerich = "0.8.1"
+tomlkit = "0.13.2"
+pydantic-settings = "2.7.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "24.10.0"
