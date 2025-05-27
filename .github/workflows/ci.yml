@@ -104,9 +104,9 @@ jobs:
             sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
       - name: Start Mysql
-        run: | 
+        run: |
           sudo systemctl start mysql
-          mysql -e 'CREATE DATABASE IF NOT EXISTS ${{ env.MYSQL_DATABASE }};' -uroot
+          mysql -e 'CREATE DATABASE IF NOT EXISTS ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ env.MYSQL_PASSWORD }}
 
       - name: Run tests
         run: |
