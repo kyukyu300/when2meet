@@ -106,7 +106,7 @@ jobs:
       - name: Start Mysql
         run: |
           sudo systemctl start mysql
-          mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;" -u$MYSQL_USER -p$MYSQL_PASSWORD
+          mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
       
 
       - name: Run tests
